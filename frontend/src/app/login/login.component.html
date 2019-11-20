@@ -1,1 +1,5 @@
-<button (click)="auth.login()" *ngIf="!auth.loggedIn">Log In</button>
+<main>
+    <div class="wrapper">
+        <button (click)="auth.login()" *ngIf="!auth.loggedIn" mat-mini-fab color="warn">Log In</button>
+    </div>
+</main>
