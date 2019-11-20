@@ -6,10 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const startup_1 = __importDefault(require("./startup"));
 const config_1 = __importDefault(require("./config"));
+const startControllers_1 = require("./startControllers");
 const app = express_1.default();
-app.get('/test', (req, res) => {
-    res.send('test');
-});
+startControllers_1.startControllers(app);
 startup_1.default()
     .then(() => app.listen(config_1.default.server.port))
     .then(() => {
