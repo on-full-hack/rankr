@@ -2,11 +2,9 @@ import { Request, Response } from 'express-serve-static-core';
 import LeagueService from '../services/LeagueService';
 
 export default class LeagueController {
-    constructor(public leagueService: LeagueService) {
-        this.getAllLeagues = this.getAllLeagues.bind(this);
-    }
+    constructor(public leagueService: LeagueService) {}
 
-    async getAllLeagues(req: Request, res: Response) {
+    getAllLeagues = async (req: Request, res: Response) => {
         const result = await this.leagueService.getAllLeagues();
-    }
+    };
 }

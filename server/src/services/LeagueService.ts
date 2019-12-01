@@ -1,15 +1,13 @@
 import LeagueRepository from '../persistance/repositories/LeagueRepository';
 
 export default class LeagueService {
-    constructor(public leagueRepository: LeagueRepository) {
-        this.getAllLeagues = this.getAllLeagues.bind(this);
-    }
-    async getAllLeagues() {
+    constructor(public leagueRepository: LeagueRepository) {}
+
+    getAllLeagues = () => {
         try {
-            const leagues = await this.leagueRepository.getAll();
-            return leagues;
+            return this.leagueRepository.getAll();
         } catch (e) {
             console.error(e);
         }
-    }
+    };
 }
