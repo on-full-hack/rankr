@@ -15,5 +15,8 @@
     "bugs": {
         "url": "https://github.com/on-full-hack/rankr/issues"
     },
-    "homepage": "https://github.com/on-full-hack/rankr#readme"
+    "homepage": "https://github.com/on-full-hack/rankr#readme",
+    "devDependencies": {
+        "prettier": "^1.19.1"
+    }
 }
