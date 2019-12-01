@@ -1,8 +1,8 @@
 <div class="nav-container">
   <mat-toolbar color="primary">
-    <mat-toolbar-row>
+    <mat-toolbar-row class="container">
       <span class="app-title">Rankr</span>
-      <li *ngIf="auth.userProfile$ | async as profile">
+      <div *ngIf="auth.userProfile$ | async as profile">
         <a>
           <img
             [src]="profile.picture"
@@ -11,8 +11,7 @@
             style="width: 30px"
           />
         </a>
-        </li>
+      </div>
     </mat-toolbar-row>
   </mat-toolbar>
-
 </div>
