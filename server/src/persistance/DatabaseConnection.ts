@@ -1,4 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
+import config from '../config';
 
 let connected = false;
 function connect() {
@@ -9,7 +10,7 @@ function connect() {
         mongoose.connection.on('reconnected', () =>
             console.log('Reconnected to database')
         );
-        mongoose.connect(process.env.MONGO_CONNECTION, {
+        mongoose.connect(config.mongo.url, {
             useNewUrlParser: true,
         });
         connected = true;

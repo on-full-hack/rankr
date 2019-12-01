@@ -1,11 +1,18 @@
-import awilix from 'awilix';
+import { createContainer, asClass, InjectionMode, asValue } from 'awilix';
 import LeagueService from './services/LeagueService';
 import LeagueController from './controllers/LeagueController';
+import LeagueRepository from './persistance/repositories/LeagueRepository';
+import { leagueModel } from './persistance/models';
 
 export default function buildContainer() {
-    const container = awilix.createContainer();
+    const container = createContainer({
+        injectionMode: InjectionMode.CLASSIC,
+    });
+
     container.register({
-        leagueService: awilix.asClass(LeagueService),
+        leagueService: asClass(LeagueService).singleton(),
+        leagueRepository: asClass(LeagueRepository).singleton(),
+        leagueModel: asValue(leagueModel),
     });
 
     return {

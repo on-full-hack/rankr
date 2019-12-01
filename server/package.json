@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "start": "npm run serve",
-        "start:db": "docker run --rm -p 27017:27017 --name rankr-db --volume rankr-db:/data/db mongo:4.0.10",
+        "start:db": "docker stop rankr-db 2>&1  && docker run --rm -p 27017:27017 --name rankr-db --volume rankr-db:/data/db mongo:4.0.10",
         "build": "npm run build-ts && npm run lint",
         "serve": "node dist/server.js",
         "watch-node": "nodemon dist/server.js",
@@ -25,10 +25,12 @@
         "awilix": "^4.2.2",
         "express": "^4.17.1",
         "mongo": "^0.1.0",
-        "mongodb": "^3.3.3"
+        "mongodb": "^3.3.3",
+        "mongoose": "^5.7.13"
     },
     "devDependencies": {
         "@types/express": "^4.17.1",
+        "@types/glob": "^7.1.1",
         "@types/mongodb": "^3.3.6",
         "@types/mongoose": "^5.5.32",
         "@types/node": "^12.11.1",
