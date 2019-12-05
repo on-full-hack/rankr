@@ -1,9 +1,11 @@
 <div class="nav-container">
   <mat-toolbar color="primary">
     <mat-toolbar-row class="container">
-      <span class="app-title">Rankr</span>
+      <a routerLink="" style="text-decoration: none; color: white">
+        <span class="app-title">Rankr</span>
+      </a>
       <div *ngIf="auth.userProfile$ | async as profile">
-        <a>
+        <a routerLink="/profile">
           <img
             [src]="profile.picture"
             alt="Profile picture"

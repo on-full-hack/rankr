@@ -4,28 +4,42 @@ import { HomeComponent } from './pages/home/home.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginComponent } from './login/login.component';
+import { LeaguesComponent } from './leagues/leagues.component';
+import { LeagueViewComponent } from './league-view/league-view.component';
 
 const routes: Routes = [
   {
+    path: 'login',
+    component: LoginComponent,
+    pathMatch: 'full',
+  },
+  {
     path: 'profile',
     component: ProfileComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: '',
     component: HomeComponent,
     pathMatch: 'full',
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
-    path: 'login',
-    component: LoginComponent,
-    pathMatch: 'full'
-  }
+    path: 'leagues',
+    component: LeaguesComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'league/:id',
+    component: LeagueViewComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
