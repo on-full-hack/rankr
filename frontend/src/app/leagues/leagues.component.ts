@@ -18,7 +18,6 @@ export class LeaguesComponent implements OnInit {
 
   getLeagues() {
     this.leagueService.getLeagues().subscribe(leagues => {
-      console.log(leagues);
       this.leagues = leagues;
     });
   }

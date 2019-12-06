@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LeagueService } from '../leagues/league.service';
+import { League } from '../leagues/League';
+import { MatchService } from '../match.service';
+import { Match } from '../match';
 
 @Component({
   selector: 'app-league-view',
@@ -8,12 +11,22 @@ import { LeagueService } from '../leagues/league.service';
   styleUrls: ['./league-view.component.css'],
 })
 export class LeagueViewComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private leagueService: LeagueService) {}
+  leagueId: string;
+  league: League;
+  matches: Match[];
+  displayedColumns = ['id', 'player1', 'player2', 'wonBy'];
+
+  constructor(
+    private route: ActivatedRoute,
+    private leagueService: LeagueService,
+    private matchService: MatchService
+  ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      // this.leagueService.
-      // this.product = products[+params.get('productId')]
+      this.leagueId = params.get('id');
     });
+    this.leagueService.getLeague(this.leagueId).subscribe(league => (this.league = league));
+    this.matchService.getMatches(this.leagueId).subscribe(matches => (this.matches = matches));
   }
 }
