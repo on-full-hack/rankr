@@ -1,0 +1,15 @@
+<div class="container">
+  <p *ngFor="let league of leagues">
+    <mat-card [routerLink]="['/league', league.id]">
+      <mat-card-title>
+        {{ league.name }}
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{ league.discipline }}
+      </mat-card-subtitle>
+      <mat-card-content>
+        {{ league.description }}
+      </mat-card-content>
+    </mat-card>
+  </p>
+</div>

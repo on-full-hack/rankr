@@ -1,17 +1,12 @@
 <div class="nav-container">
   <mat-toolbar color="primary">
-    <mat-toolbar-row class="container">
-      <span class="app-title">Rankr</span>
-      <div *ngIf="auth.userProfile$ | async as profile">
-        <a>
-          <img
-            [src]="profile.picture"
-            alt="Profile picture"
-            class="nav-user-profile rounded-circle"
-            style="width: 30px"
-          />
-        </a>
-      </div>
+    <mat-toolbar-row class="nav-container">
+      <a routerLink="" style="text-decoration: none; color: white">
+        <span class="app-title">Rankr</span>
+      </a>
+      <a class="profile-link" routerLink="/profile" *ngIf="auth.userProfile$ | async as profile">
+        <img [src]="profile.picture" alt="Profile picture" class="profile" />
+      </a>
     </mat-toolbar-row>
   </mat-toolbar>
 </div>
