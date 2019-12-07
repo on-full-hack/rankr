@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run serve",
-    "start:db": "docker run --rm -p 27017:27017 --name rankr-db --volume rankr-db:/data/db mongo:4.0.10",
+    "start:db": "( docker stop rankr-db || true )  && docker run --rm -p 27017:27017 --name rankr-db --volume rankr-db:/data/db mongo:4.0.10",
     "build": "npm run build-ts && npm run lint",
     "serve": "node dist/server.js",
     "watch-node": "nodemon dist/server.js",
