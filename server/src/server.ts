@@ -1,4 +1,5 @@
 import express from 'express';
+import dotenv from 'dotenv';
 import config from './config';
 import { startControllers } from './startControllers';
 import { applyMiddlewares } from './middlewares';
@@ -6,6 +7,9 @@ import { applyMiddlewares } from './middlewares';
 startup();
 
 async function startup() {
+  if (process.env.NODE_ENV !== 'production') {
+    dotenv.config();
+  }
   const app = express();
   const router = express.Router();
   applyMiddlewares(app);

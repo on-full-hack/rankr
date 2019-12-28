@@ -9,18 +9,19 @@ export const logRequest = (req: Request, res: Response, next: NextFunction) => {
   next();
 };
 
-export const checkJwt = jwt({
-  secret: jwksRsa.expressJwtSecret({
-    cache: true,
-    rateLimit: true,
-    jwksRequestsPerMinute: 5,
-    jwksUri: `${config.auth.domain}.well-known/jwks.json`,
-  }),
+export const checkJwt = () =>
+  jwt({
+    secret: jwksRsa.expressJwtSecret({
+      cache: true,
+      rateLimit: true,
+      jwksRequestsPerMinute: 5,
+      jwksUri: `${config.auth.domain}.well-known/jwks.json`,
+    }),
 
-  audience: config.auth.audience,
-  issuer: config.auth.domain,
-  algorithms: ['RS256'],
-});
+    audience: config.auth.audience,
+    issuer: config.auth.domain,
+    algorithms: ['RS256'],
+  });
 
 export const applyMiddlewares = (app: Application) => {
   app.use(logRequest);
