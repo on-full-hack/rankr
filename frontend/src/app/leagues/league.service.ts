@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { League } from './League';
+import { HttpClient } from '@angular/common/http';
 
 const leagues: League[] = [
   {
@@ -24,7 +25,7 @@ const leagues: League[] = [
   providedIn: 'root',
 })
 export class LeagueService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   getLeagues() {
     return of(leagues);
@@ -32,5 +33,9 @@ export class LeagueService {
 
   getLeague(id: string) {
     return of(leagues.find(league => league.id === id));
+  }
+
+  ping$(): Observable<any> {
+    return this.http.get('api/leagues/testid');
   }
 }

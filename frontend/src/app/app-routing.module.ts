@@ -6,6 +6,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { LeaguesComponent } from './leagues/leagues.component';
 import { LeagueViewComponent } from './league-view/league-view.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorService } from './interceptor.service';
 
 const routes: Routes = [
   {
@@ -41,5 +43,12 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true,
+    },
+  ],
 })
 export class AppRoutingModule {}

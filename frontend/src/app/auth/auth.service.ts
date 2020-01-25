@@ -7,7 +7,7 @@ import { tap, catchError, concatMap, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   // Create an observable of Auth0 instance of client
@@ -15,7 +15,8 @@ export class AuthService {
     createAuth0Client({
       domain: config.domain,
       client_id: config.clientId,
-      redirect_uri: `${window.location.origin}`
+      audience: config.audience,
+      redirect_uri: `${window.location.origin}`,
     })
   ) as Observable<Auth0Client>).pipe(
     shareReplay(1), // Every subscription receives the same shared value
@@ -27,7 +28,7 @@ export class AuthService {
   // from: Convert that resulting promise into an observable
   isAuthenticated$ = this.auth0Client$.pipe(
     concatMap((client: Auth0Client) => from(client.isAuthenticated())),
-    tap(res => this.loggedIn = res)
+    tap(res => (this.loggedIn = res))
   );
   handleRedirectCallback$ = this.auth0Client$.pipe(
     concatMap((client: Auth0Client) => from(client.handleRedirectCallback()))
@@ -80,7 +81,7 @@ export class AuthService {
       // Call method to log in
       client.loginWithRedirect({
         redirect_uri: `${window.location.origin}`,
-        appState: { target: redirectPath }
+        appState: { target: redirectPath },
       });
     });
   }
@@ -98,10 +99,7 @@ export class AuthService {
         }),
         concatMap(() => {
           // Redirect callback complete; get user and login status
-          return combineLatest([
-            this.getUser$(),
-            this.isAuthenticated$
-          ]);
+          return combineLatest([this.getUser$(), this.isAuthenticated$]);
         })
       );
       // Subscribe to authentication completion observable
@@ -119,9 +117,12 @@ export class AuthService {
       // Call method to log out
       client.logout({
         client_id: config.clientId,
-        returnTo: window.location.origin
+        returnTo: window.location.origin,
       });
     });
   }
 
+  getTokenSilently$(options?): Observable<string> {
+    return this.auth0Client$.pipe(concatMap((client: Auth0Client) => from(client.getTokenSilently(options))));
+  }
 }

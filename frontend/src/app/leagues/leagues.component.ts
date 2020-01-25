@@ -9,11 +9,13 @@ import { League } from './League';
 })
 export class LeaguesComponent implements OnInit {
   leagues: League[];
+  responseJson;
 
   constructor(private leagueService: LeagueService) {}
 
   ngOnInit() {
     this.getLeagues();
+    this.leagueService.ping$().subscribe(res => (this.responseJson = res));
   }
 
   getLeagues() {
