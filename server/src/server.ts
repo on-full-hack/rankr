@@ -12,7 +12,7 @@ async function startup() {
   }
   const app = express();
   const router = express.Router();
-  applyMiddlewares(app);
+  // applyMiddlewares(app);
   startControllers(router);
   app.use('/api', router);
 

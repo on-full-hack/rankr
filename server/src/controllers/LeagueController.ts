@@ -5,7 +5,8 @@ export default class LeagueController {
   constructor(public leagueService: LeagueService) {}
 
   getAllLeagues = async (req: Request, res: Response) => {
-    return await this.leagueService.getAllLeagues();
+    const leagues = await this.leagueService.getAllLeagues();
+    res.json({ values: leagues });
   };
 
   createLeague = async (req: Request, res: Response) => {
