@@ -12,7 +12,14 @@ export default class LeagueController {
 
   createLeague = async (req: Request, res: Response) => {
     const { name, description, discipline, type } = req.body;
-    const result = await this.leagueService.addLeague(name, description, discipline, type);
+    const { user_id } = req.headers;
+    const result = await this.leagueService.addLeague(
+      user_id.toString(),
+      name,
+      description,
+      discipline,
+      type
+    );
     sendResponse[result](res);
   };
 }
