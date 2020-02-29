@@ -1,7 +1,8 @@
 import LeagueRepository from '../persistance/repositories/LeagueRepository';
+import Consants from '../controllers/Constants';
 
 export default class LeagueService {
-  constructor(public leagueRepository: LeagueRepository) {}
+  constructor(public leagueRepository: LeagueRepository) { }
 
   getAllLeagues = () => {
     try {
@@ -11,11 +12,14 @@ export default class LeagueService {
     }
   };
 
-  addLeague = async () => {
+  addLeague = async (name: string, description: string, discipline: string, type: string) => {
     try {
-      await this.leagueRepository.addLeague('example', 'example', 'example', 'example');
-    } catch (e) {
+      await this.leagueRepository.addLeague(name, description, discipline, type);
+      return Consants.LEAGUE_CREATED;
+    }
+    catch (e) {
       console.error(e);
+      return Consants.ERROR;
     }
   };
 }

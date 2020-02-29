@@ -11,10 +11,7 @@ export function startControllers(app: Router) {
 
   app.get('/leagues', LeagueController.getAllLeagues);
 
-  app.post('/leagues', (req, res) => {
-    res.send('Add new League');
-    // LeagueController.createLeague
-  });
+  app.post('/leagues', LeagueController.createLeague);
 
   app.get('/leagues/:id', (req, res) => {
     res.send('Get league details');

@@ -27,5 +27,5 @@ export const applyMiddlewares = (app: Application) => {
   app.use(logRequest);
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
-  app.use(checkJwt);
+  // app.use(checkJwt);
 };
