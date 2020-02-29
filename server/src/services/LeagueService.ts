@@ -12,9 +12,9 @@ export default class LeagueService {
     }
   };
 
-  addLeague = async (name: string, description: string, discipline: string, type: string) => {
+  addLeague = async (creator_id: string, name: string, description: string, discipline: string, type: string) => {
     try {
-      await this.leagueRepository.addLeague(name, description, discipline, type);
+      await this.leagueRepository.addLeague(creator_id, name, description, discipline, type);
       return Consants.LEAGUE_CREATED;
     }
     catch (e) {
