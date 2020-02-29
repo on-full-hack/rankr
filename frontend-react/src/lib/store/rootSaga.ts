@@ -1,6 +1,6 @@
 import { all, fork } from 'redux-saga/effects';
-import { watchLoadLeagues } from './leagues/sagas';
+import { watchLoadLeagues, watchCreateLeague } from './leagues/sagas';
 
 export const rootSaga = function* root() {
-  yield all([fork(watchLoadLeagues)]);
+  yield all([fork(watchLoadLeagues), fork(watchCreateLeague)]);
 };

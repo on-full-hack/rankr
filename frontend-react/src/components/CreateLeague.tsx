@@ -1,6 +1,8 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { TextField, Button, makeStyles } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import { createLeague } from '../lib/store/leagues/actions';
 
 const useStyles = makeStyles({
   root: {
@@ -17,13 +19,14 @@ const useStyles = makeStyles({
 
 export const CreateLeague = () => {
   const styles = useStyles();
+  const dispatch = useDispatch();
 
   return (
     <div className={styles.root}>
       <Formik
         initialValues={{ name: '', description: '', discipline: '', type: '' }}
         onSubmit={async values => {
-          console.log(values);
+          dispatch(createLeague(values));
         }}
       >
         {({ values, handleChange, handleSubmit }) => (

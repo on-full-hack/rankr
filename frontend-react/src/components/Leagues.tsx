@@ -8,7 +8,6 @@ const selectLeagues = (state: AppState) => state.league.leagues;
 export const Leagues = () => {
   const leagues = useSelector(selectLeagues);
   const dispatch = useDispatch();
-  console.log('render');
 
   useEffect(() => {
     dispatch(loadLeagues());
