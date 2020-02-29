@@ -7,6 +7,7 @@ import { AppBar } from './components/AppBar';
 import { Home } from './components/Home';
 import { Leagues } from './components/Leagues';
 import configureStore from './lib/store';
+import { CreateLeague } from './components/CreateLeague';
 
 const store = configureStore();
 
@@ -23,6 +24,9 @@ export const App = () => {
           </Route>
           <Route path="/leagues">
             <Leagues />
+          </Route>
+          <Route path="/create-league">
+            <CreateLeague />
           </Route>
         </BrowserRouter>
       </ThemeProvider>

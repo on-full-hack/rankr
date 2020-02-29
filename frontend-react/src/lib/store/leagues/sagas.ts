@@ -8,9 +8,6 @@ export function* watchLoadLeagues() {
 }
 
 function* requestLoadLeagues() {
-  console.log('requestLoadLeagues');
   const response = yield call(getLeagues);
-  console.log(response);
-
   yield put(loadLeaguesSuccess(response));
 }
