@@ -14,7 +14,7 @@ async function startup() {
   const app = express();
   app.use(cors());
   const router = express.Router();
-  // applyMiddlewares(app);
+  applyMiddlewares(app);
   startControllers(router);
   app.use('/api', router);
 
