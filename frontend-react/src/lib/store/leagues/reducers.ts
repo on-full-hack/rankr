@@ -1,4 +1,4 @@
-import { LeagueState, LeagueActionTypes, LOAD_LEAGUES } from './types';
+import { LeagueState, LeagueActionTypes, LOAD_LEAGUES_SUCCESS } from './types';
 
 const initialState: LeagueState = {
   leagues: [],
@@ -6,7 +6,7 @@ const initialState: LeagueState = {
 
 export const leagueReducer = (state = initialState, action: LeagueActionTypes): LeagueState => {
   switch (action.type) {
-    case LOAD_LEAGUES:
+    case LOAD_LEAGUES_SUCCESS:
       return { leagues: [...state.leagues, ...action.payload] };
     default:
       return state;

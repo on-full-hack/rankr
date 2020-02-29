@@ -1,11 +1,15 @@
-import { TEST_LEAGUES, League, LOAD_LEAGUES } from './types';
+import { League, LOAD_LEAGUES, ApiError } from './types';
 
-export const testLeagues = (arg: string) => ({
-  type: TEST_LEAGUES,
-  payload: arg,
+export const loadLeagues = () => ({
+  type: LOAD_LEAGUES,
 });
 
-export const loadLeagues = (leagues: League[]) => ({
+export const loadLeaguesSuccess = (leagues: League[]) => ({
   type: LOAD_LEAGUES,
   payload: leagues,
+});
+
+export const loadLeaguesError = (error: ApiError) => ({
+  type: LOAD_LEAGUES,
+  payload: error,
 });

@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import config from './config';
 import { startControllers } from './startControllers';
 import { applyMiddlewares } from './middlewares';
@@ -11,6 +12,7 @@ async function startup() {
     dotenv.config();
   }
   const app = express();
+  app.use(cors());
   const router = express.Router();
   // applyMiddlewares(app);
   startControllers(router);

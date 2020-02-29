@@ -3,6 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { leagueReducer } from './leagues/reducers';
+import { rootSaga } from './rootSaga';
 
 const rootReducer = combineReducers({
   league: leagueReducer,
@@ -17,6 +18,8 @@ export default function configureStore() {
   const middleWareEnhancer = applyMiddleware(...middlewares);
 
   const store = createStore(rootReducer, composeWithDevTools(middleWareEnhancer));
+
+  sagaMiddleware.run(rootSaga);
 
   return store;
 }
