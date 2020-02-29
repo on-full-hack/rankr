@@ -5,7 +5,7 @@ export default class LeagueRepository extends Repository {
     super(leagueModel);
   }
 
-  addLeague = async (name: string, description: string, discipline: string, type: string) => {
-    await this.add({ name, description, discipline, type });
+  addLeague = async (creator_id: string, name: string, description: string, discipline: string, type: string) => {
+    await this.add({ creator_id, name, description, discipline, type });
   };
 }
