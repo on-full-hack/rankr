@@ -21,9 +21,7 @@ export function startControllers(app: Router) {
     res.send('Update league');
   });
 
-  app.delete('/leagues/:id', (req, res) => {
-    res.send('Delete league');
-  });
+  app.delete('/leagues/:id', LeagueController.deleteLeague);
 
   app.put('/leagues', (req, res) => {
     res.send('Update league');

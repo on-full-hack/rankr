@@ -1,7 +1,7 @@
 import { Model } from 'mongoose';
 
 export default class Repository {
-  constructor(public model: any) { }
+  constructor(public model: any) {}
 
   add = async (object: any) => {
     return await this.model.create(object);
@@ -23,7 +23,7 @@ export default class Repository {
     return products;
   };
 
-  removeOne = async (filter: string) => {
+  removeOne = async (filter: Object) => {
     const query = this.model.findOneAndDelete(filter);
     const deletedProduct = await query.exec();
     return deletedProduct;

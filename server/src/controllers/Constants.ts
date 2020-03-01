@@ -1,4 +1,5 @@
 export default {
-  ERROR: 'Something went wrong when saving the league',
+  ERROR: 'Something went wrong',
   LEAGUE_CREATED: 'New league created',
+  LEAGUE_DELETED: 'League deleted successfully',
 };
