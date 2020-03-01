@@ -27,6 +27,11 @@ const navigationItems = [
     route: '/leagues',
     Icon: InboxIcon,
   },
+  {
+    label: 'New league',
+    route: '/create-league',
+    Icon: InboxIcon,
+  },
 ];
 
 const useStyles = makeStyles({
