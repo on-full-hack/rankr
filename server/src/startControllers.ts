@@ -13,27 +13,17 @@ export function startControllers(app: Router) {
 
   app.post('/leagues', LeagueController.createLeague);
 
-  app.get('/leagues/:id', (req, res) => {
-    res.send('Get league details');
-  });
+  app.get('/leagues/:id', LeagueController.getLeague);
 
-  app.put('/leagues', (req, res) => {
-    res.send('Update league');
-  });
+  app.put('/leagues', LeagueController.updateLeague);
 
   app.delete('/leagues/:id', LeagueController.deleteLeague);
-
-  app.put('/leagues', (req, res) => {
-    res.send('Update league');
-  });
 
   /*
    * USERS WITH LEAGUES ROUTES
    */
 
-  app.post('/user/join/:id', (req, res) => {
-    res.send('Join to league');
-  });
+  app.post('/user/join-to-league/:id', LeagueController.joinToLeague);
 
   app.post('/user/join/link/:codeToJoin', (req, res) => {
     res.send('Join to league by link');

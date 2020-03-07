@@ -1,8 +1,11 @@
 import { Schema } from 'mongoose';
+import { ObjectId } from 'mongodb';
 
 export default new Schema({
   creator_id: {
-    type: String,
+    // type: ObjectId,
+    // ref: 'User',
+    type: String, // change to ObjectId when user will be implemented
     required: true,
   },
   name: {
@@ -21,4 +24,11 @@ export default new Schema({
     type: String,
     required: true,
   },
+  playersWaitingToJoin: [
+    {
+      // type: ObjectId, ref: 'User'
+      type: String, //change to ObjectId in the future
+    },
+  ],
+  players: [{ type: ObjectId, ref: 'User' }],
 });
